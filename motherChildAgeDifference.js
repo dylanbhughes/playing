@@ -13,10 +13,12 @@ ancestry.forEach(function(person) {
 
 // Your code here.
 
-var children = ancestry.reduce(function(a){
-  return if(a.mother);
+var ageGap = ancestry.filter(function(person) {
+  return byName[person.mother] != null;
+    }).map(function (person) {
+      return person.born - byName[person.mother].born;
 });
 
-
+console.log(average(ageGap));
 
 // → 31.2
